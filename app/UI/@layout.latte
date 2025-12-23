@@ -25,16 +25,16 @@
 										</a>
 									</td>
 									<td width="75%" class="c2" nowrap="">
-										<a href="about"><b>О программе</b></a>
-										<a href="download"><b>Загрузить</b></a>
-										<a href="help"><b>Помощь</b></a>
-										<a href="developers"><b>Разработчикам ;-)</b></a>
+										<a href="/about"><b>О программе</b></a>
+										<a href="/download"><b>Загрузить</b></a>
+										<a href="/faq"><b>ЧаВо</b></a>
+										<a href="/statistics"><b>Статистика</b></a>
 										{if $user->isLoggedIn()}
-										<a href="anketa_edit"><b>Анкета {$userObj->getNickname()}</b></a>
-										<a href="logout"><b>Выйти</b></a>
+										<a href="/editProfile"><b>Анкета {$userObj->getNickname()}</b></a>
+										<a href="/logout"><b>Выйти</b></a>
 										{else}
-										<a href="login"><b>Войти</b></a>
-										<a href="reg"><b>Зарегистрироваться</b></a>
+										<a href="/login"><b>Войти</b></a>
+										<a href="/reg"><b>Зарегистрироваться</b></a>
 										{/if}
 									</td>
 								</tr>
@@ -64,7 +64,7 @@
 									</div>
 								</td>
 								<td width="5%" class="c2"><img src="img/0.gif" width="43" height="1"></td>
-								<td width="70%" class="c3">
+								<td width="70%" class="c3 contentinner">
 									<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
 									{include content}
@@ -84,6 +84,7 @@
 								<td width="70%" class="c2"><a
 										href="https://t.me/renaissancemrim">Telegram</a> | <a
 										href="https://flirb.net/profile.php?username=renaissance">Flirb</a> | <a
+										href="https://github.com/mrimsu">GitHub</a> | <a
 										href="/about">О проекте</a> </td>
 							</tr>
 						</tbody>

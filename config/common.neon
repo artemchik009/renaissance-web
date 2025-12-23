@@ -1,5 +1,5 @@
 parameters:
-
+	mrim_rest_api_url: 'http://192.168.1.15:1862'
 
 application:
 	errorPresenter:
@@ -25,3 +25,6 @@ di:
 	export:
 		parameters: no
 		tags: no
+
+services:
+    - App\Model\StatsCollector(%mrim_rest_api_url%)

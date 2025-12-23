@@ -1,0 +1,35 @@
+{block title}
+О проекте
+{/block}
+
+{block content}
+
+<h1>Статистика по использованию</h1>
+<p>Страница обновляется каждую минуту</p>
+
+{ifset $usersClients}
+<p>Пользователей сейчас в сети: <b>{$usersCount}</b></p>
+
+<table bgcolor="FFFFFF" cellpadding="3">
+    <tbody>
+        <tr>
+            <th>
+                Название и версия клиента
+            </th>
+            <th>
+                Количество пользователей
+            </th>
+        </tr>
+        {foreach $usersClients as $client}
+        <tr>
+            <td>
+                {$client->name}
+            </td>
+            <td>
+                {$client->count}
+            </td>
+        </tr>
+        {/foreach}
+    </tbody>
+</table>
+{/ifset}

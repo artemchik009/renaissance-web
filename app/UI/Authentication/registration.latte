@@ -1,0 +1,86 @@
+{block title}
+Регистрация аккаунта
+{/block}
+
+{block content}
+<h1>Регистрация аккаунта</h1>
+
+<form action="/reg" method="post">
+    <h3>Идентификацонные данные</h3>
+    <table border="0">
+        <tbody>
+            <tr>
+                <td>
+                    Виртуальная почта:
+                </td>
+                <td>
+                    <input type="email" name="username">
+                    <select name="domain" id="domain">
+                        <option value="mail.ru">@mail.ru</option>
+                        <option value="list.ru">@list.ru</option>
+                        <option value="bk.ru">@bk.ru</option>
+                        <option value="inbox.ru">@inbox.ru</option>
+                    </select>
+                    <small>Внимание! Здесь указывается фейковая почта</small>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Имя:
+                </td>
+                <td>
+                    <input type="text" name="name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Фамилия:
+                </td>
+                <td>
+                    <input type="text" name="surname">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Пол:
+                </td>
+                <td>
+                    <select name="sex" id="sex">
+                        <option value="1">Мужской</option>
+                        <option value="2">Женский</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    День рождения:
+                </td>
+                <td>
+                    <input type="date" name="birthday">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Никнейм:
+                </td>
+                <td>
+                    <input type="text" name="nickname">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Месторасположение:
+                </td>
+                <td>
+                    <input type="text" name="place">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Важно!</h2>
+    <p>Пароль генерируется автоматически, так как протокол Агента@Mail.ru использует <b>небезопасные</b> методы входа. <b>Свой пароль вы поставить не сможете!</b> Вы можете его сбросить в будущем, после регистрации аккаунта.</p>
+
+    <input type="submit" value="Зарегистрироваться">
+</form>
+

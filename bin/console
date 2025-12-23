@@ -1,0 +1,30 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$btstrp = new App\Bootstrap;
+$container = $btstrp->boot();
+
+$commands = [
+    'mrim:stats' => function() use ($container) {
+        $collector = $container->getByType(\App\Model\StatsCollector::class);
+        $collector->run();
+        echo "ok\n";
+    },
+];
+
+$cmd = $argv[1] ?? null;
+
+if (!$cmd || !isset($commands[$cmd])) {
+    echo "available commands:\n";
+    foreach (array_keys($commands) as $name) {
+        echo "  - $name\n";
+    }
+    exit(1);
+}
+
+// запускаем команду
+$commands[$cmd]();

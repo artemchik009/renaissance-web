@@ -1,6 +1,6 @@
 services:
 	- App\Core\RouterFactory::createRouter
-	- App\UI\Presenter
+	- App\Presenter
 	- App\Auth\Auth
 
 search:

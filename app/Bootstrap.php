@@ -22,6 +22,15 @@ class Bootstrap
 	}
 
 
+    public function boot(): \Nette\DI\Container
+    {
+        $config = new Configurator;
+        $config->setTempDirectory(__DIR__ . '/../temp');
+        $config->addConfig(__DIR__ . '/../config/common.neon');
+        return $config->createContainer();
+    }
+
+
 	public function bootWebApplication(): Nette\DI\Container
 	{
 		$this->initializeEnvironment();

@@ -12,10 +12,6 @@ a:hover
 
 input,select,textarea
 			{font:100% Tahoma, Helvetica, sans-serif; color:#000000}
-input,select
-			{height:18px}
-input		
-			{height:16px}
 input.but	
 			{height:21px; background-image:url('../img/but_bg.gif'); border:1px solid #0A97C1; color:#FFF; font:bold 100% 'Trebuchet MS', Tahoma, Arial, sans-serif}
 input.but:hover
@@ -308,3 +304,11 @@ TABLE.download-step	TD	{
 TABLE.download-step	TD.step	{
 	padding-top:6px
 	}		
+
+.flash {
+	font-size: 11pt;
+	border: 1px solid black;
+    background-color: antiquewhite;
+    padding: 5px;
+    margin-bottom: 10px;
+}

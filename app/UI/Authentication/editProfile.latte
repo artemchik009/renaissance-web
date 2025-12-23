@@ -1,0 +1,68 @@
+{block title}
+Редактирование анкеты
+{/block}
+
+{block content}
+<h1>Редактирование анкеты</h1>
+
+<form action="/editProfile" method="post">    
+    <h3>О себе</h3>
+    <table border="0">
+        <tbody>
+            <tr>
+                <td>
+                    Имя:
+                </td>
+                <td>
+                    <input type="text" name="name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Фамилия:
+                </td>
+                <td>
+                    <input type="text" name="surname">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Пол:
+                </td>
+                <td>
+                    <select name="sex" id="sex">
+                        <option value="1">Мужской</option>
+                        <option value="2">Женский</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    День рождения:
+                </td>
+                <td>
+                    <input type="date" name="birthday">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Никнейм:
+                </td>
+                <td>
+                    <input type="text" name="nickname">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Месторасположение:
+                </td>
+                <td>
+                    <input type="text" name="place">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <input type="submit" value="Сохранить">
+</form>
+
