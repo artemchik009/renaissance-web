@@ -1,0 +1,5 @@
+smtp_host: ''
+smtp_username: ''
+smtp_email: ''
+smtp_password: ''
+smtp_encryption: 'ssl'

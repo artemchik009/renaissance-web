@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>renaissance</title>
+    <style>
+        table, td, div, h1, h2, h3, h4, h5, h6, p {
+            font-family: Tahoma, Arial, Helvetica, sans-serif;
+            color: #000;
+        }
+        a{
+            color: #0099ff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body style="margin:0;padding:0;color:#000;">
+    <table role="presentation" style="background:#fff;width:100%;min-width:750px;padding:1em 0;">
+        <tr>
+            <td style="padding:0;">
+                <table role="presentation" style="width:100%;background-color:#ff8800;padding: 15px 20px;font-weight: bold;font-size: 24px;">
+                    <tr>
+                        <td>
+                            <span style="color:#fff;">renaissance</span>
+                        </td>
+                    </tr>
+                </table>
+                <table role="presentation" style="width:100%;background-color:#fff;padding:0 20px;">
+                    <tr>
+                        <td>
+                            <br>
+                            <h3 style="margin: 0;">
+                                Привет {$nickname}!
+                            </h3>
+                        </td>
+                    </tr>
+                </table>
+                <table role="presentation" style="width:100%;background-color:#fff;padding:0 20px;">
+                    <tr>
+                        <td>
+                            <span style="font-size:11px;">
+                                Для продолжения, необходимо подтвердить электронную почту, нажав на кнопку снизу.
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+                <table role="presentation" style="width:100%;background-color:#fff;padding:0 20px;">
+                    <tr>
+                        <td>
+                            <br>
+                            <a href="{$host}verification?code={$code}" style="text-decoration:none;background-color: #ff8800;color: #fff;border: 0;cursor: pointer;padding: 10px;font-size: 11px;font-weight: 600;border-radius: 3px;">
+                                Подтвердить почту
+                            </a>
+                            <br><br>
+                        </td>
+                    </tr>
+                </table>
+                <table role="presentation" style="width:100%;background-color:#fff;padding:0 20px;">
+                    <tr>
+                        <td>
+                            <span style="font-size:11px;color: #666">
+                                Если вы не можете нажать на кнопку, попробуйте скопировать ссылку и вставить её в адресную строку вашего веб-обозревателя: <a href="{$host}verification?code={$code}">{$host}verification?code={$code}</a>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+                <table role="presentation" style="width:100%;background-color:#fff;padding:0 20px;">
+                    <tr>
+                        <td>
+                            <span style="font-size:11px;color: #666">
+                                Необходимо подтвердить почту сегодня, иначе ваша учётная запись будет удалена завтра.
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+                <table style="width:100%;background-color:#fff;padding:0 20px;">
+                    <tr>
+                        <td>
+                            <span style="font-size:11px;color:#666;">
+                                Если Вы ничего не делали на сайте <a href="{$host}">{$host}</a> просто проигнорируйте или удалите данное письмо.
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

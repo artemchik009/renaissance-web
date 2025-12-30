@@ -3,6 +3,9 @@
 {/block}
 
 {block content}
+{if empty($user_data->real_email)}
+<div class="flash error"><b>Внимание!</b> Необходимо добавить настоящую электронную почту, иначе вы не сможете пользоваться клиентами Агента Mail.Ru!</div>
+{/if}
 <h1>Редактирование анкеты</h1>
 
 <form action="/editProfile" method="post">    
@@ -14,7 +17,7 @@
                     Имя:
                 </td>
                 <td>
-                    <input type="text" name="name">
+                    <input type="text" name="name" value="{$user_data->f_name}">
                 </td>
             </tr>
             <tr>
@@ -22,7 +25,15 @@
                     Фамилия:
                 </td>
                 <td>
-                    <input type="text" name="surname">
+                    <input type="text" name="surname" value="{$user_data->l_name}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Электронная почта:
+                </td>
+                <td>
+                    <input type="email" name="real_email" value="{$user_data->real_email}">
                 </td>
             </tr>
             <tr>
@@ -31,8 +42,8 @@
                 </td>
                 <td>
                     <select name="sex" id="sex">
-                        <option value="1">Мужской</option>
-                        <option value="2">Женский</option>
+                        <option value="1" {$user_data->sex == 1 ? "selected" : ""}>Мужской</option>
+                        <option value="2" {$user_data->sex == 2 ? "selected" : ""}>Женский</option>
                     </select>
                 </td>
             </tr>
@@ -41,7 +52,7 @@
                     День рождения:
                 </td>
                 <td>
-                    <input type="date" name="birthday">
+                    <input type="date" name="birthday" value="{Nette\Utils\DateTime::from($user_data->birthday)->format('Y-m-d')}">
                 </td>
             </tr>
             <tr>
@@ -49,7 +60,7 @@
                     Никнейм:
                 </td>
                 <td>
-                    <input type="text" name="nickname">
+                    <input type="text" name="nickname" value="{$user_data->nick}">
                 </td>
             </tr>
             <tr>
@@ -57,7 +68,7 @@
                     Месторасположение:
                 </td>
                 <td>
-                    <input type="text" name="place">
+                    <input type="text" name="place" value="{$user_data->location}">
                 </td>
             </tr>
         </tbody>

@@ -26,6 +26,8 @@ final class RouterFactory
 		$router->addRoute('/reg', 'Authentication:registration');
 		$router->addRoute('/editProfile', 'Authentication:editProfile');
 		$router->addRoute('/logout', 'Authentication:logout');
+		$router->addRoute('/verification', 'Authentication:verification');
+		$router->addRoute('/passwordReset', 'Authentication:passwordReset');
 		return $router;
 	}
 }

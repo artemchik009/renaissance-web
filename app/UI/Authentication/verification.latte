@@ -1,0 +1,24 @@
+{block title}
+{if $email_message_type == 'password_reset'}
+Сброс пароля
+{elseif $email_message_type == 'email_change'}
+Смена почты
+{else}
+Верификация аккаунта
+{/if}
+{/block}
+
+{block content}
+<h1>Готово!</h1>
+<p>
+    {if $email_message_type == 'password_reset'}
+    Вы успешно сбросили пароль.<br>
+    {elseif $email_message_type == 'email_change'}
+    Вы успешно сменили почту!
+    {else}
+    Ваша учётная запись готова для использования.<br>
+    {/if}
+    {if $email_message_type != 'email_change'}
+    Для <a href="/login">входа</a> используйте данный пароль - <strong>{$password}</strong>
+    {/if}
+</p>

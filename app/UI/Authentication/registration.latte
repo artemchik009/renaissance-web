@@ -3,27 +3,17 @@
 {/block}
 
 {block content}
+{if $registered}
+<h1>Успех!</h1>
+<p>Для продолжения, необходимо подтвердить вашу электронную почту. Мы отправили вам письмо с ссылкой для подтверждения.<br>Если вы не видите письмо, проверьте папку спама.</p>
+<img src="/img/email.png"/>
+{else}
 <h1>Регистрация аккаунта</h1>
 
 <form action="/reg" method="post">
     <h3>Идентификацонные данные</h3>
     <table border="0">
         <tbody>
-            <tr>
-                <td>
-                    Виртуальная почта:
-                </td>
-                <td>
-                    <input type="email" name="username">
-                    <select name="domain" id="domain">
-                        <option value="mail.ru">@mail.ru</option>
-                        <option value="list.ru">@list.ru</option>
-                        <option value="bk.ru">@bk.ru</option>
-                        <option value="inbox.ru">@inbox.ru</option>
-                    </select>
-                    <small>Внимание! Здесь указывается фейковая почта</small>
-                </td>
-            </tr>
             <tr>
                 <td>
                     Имя:
@@ -38,6 +28,29 @@
                 </td>
                 <td>
                     <input type="text" name="surname">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Электронная почта:
+                </td>
+                <td>
+                    <input type="email" name="real_email">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Виртуальная почта:
+                </td>
+                <td>
+                    <input type="text" name="username">
+                    <select name="domain" id="domain">
+                        <option value="mail.ru">@mail.ru</option>
+                        <option value="list.ru">@list.ru</option>
+                        <option value="bk.ru">@bk.ru</option>
+                        <option value="inbox.ru">@inbox.ru</option>
+                    </select>
+                    <small>Внимание! Здесь указывается фейковая почта</small>
                 </td>
             </tr>
             <tr>
@@ -83,4 +96,4 @@
 
     <input type="submit" value="Зарегистрироваться">
 </form>
-
+{/if}
