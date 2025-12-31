@@ -10,6 +10,8 @@ use App\Presenter as CustomPresenter;
 use App\Auth\Auth;
 use DateTime;
 use Nette\Utils\Validators;
+use Nette\Utils\Image;
+use Nette\Utils\Random;
 
 final class AuthenticationPresenter extends CustomPresenter
 {
@@ -142,6 +144,7 @@ final class AuthenticationPresenter extends CustomPresenter
         $id = $this->getUser()->getId();
         $user = $this->db->table('user')->get($id);
         $this->template->user_data = $user;
+        $this->template->obraz_domain = mrim_obraz_url;
         
         if ($this->getHttpRequest()->getMethod() === 'POST')
         {
@@ -149,9 +152,13 @@ final class AuthenticationPresenter extends CustomPresenter
             $vals = $this->getHttpRequest()->getPost();
             $error = '';
             // проверка вводимости
-            foreach([$vals['name'], $vals['surname'], $vals['nickname'], $vals['real_email'], $vals['place']] as $value){
+            foreach([$vals['name'], $vals['nickname']] as $value){
                 if(Validators::is($value, 'none'))
                     $error = "Не все поля заполнены";
+            }
+
+            if (Validators::is($vals['real_email'], 'none') && email_enabled) {
+                $error = "Не введена электронная почта";
             }
             // проверка даты рождения
             $d = DateTime::createFromFormat("Y-m-d", $vals['birthday']);
@@ -180,6 +187,39 @@ final class AuthenticationPresenter extends CustomPresenter
                 'nick'       => $vals['nickname'],
                 'location'   => $vals['place'],
             ]);
+
+            // Handle avatar upload
+            $avatarFile = $this->getHttpRequest()->getFile('obraz');
+            if ($avatarFile && $avatarFile->isOk()) {
+                // Validate file type
+                $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                if (in_array($avatarFile->getContentType(), $allowedTypes)) {
+                    try {
+                        // Create avatars directory if it doesn't exist
+                        $avatarsPath = constant('avatars_path');
+                        if (!is_dir($avatarsPath)) {
+                            mkdir($avatarsPath, 0755, true);
+                        }
+                        
+                        // Generate random filename
+                        $filename = Random::generate(20) . '.jpg';
+                        $filePath = $avatarsPath . '/' . $filename;
+                        
+                        // Convert and save image as JPG
+                        $image = Image::fromFile($avatarFile->getTemporaryFile());
+                        $image->resize(500, null, Image::ShrinkOnly);
+                        $image->sharpen();
+                        $image->save($filePath, 85, Image::JPEG);
+                        
+                        // Update user's avatar in database
+                        $user->update(['avatar' => $filename]);
+                    } catch (\Exception $e) {
+                        $this->flashMessage('Ошибка при загрузке аватара: ' . $e->getMessage(), 'error');
+                    }
+                } else {
+                    $this->flashMessage('Неверный формат файла. Разрешены только JPG, PNG и GIF.', 'error');
+                }
+            }
 
             if($vals['real_email'] != $user->real_email){
                 $code = Nette\Utils\Random::generate(72);

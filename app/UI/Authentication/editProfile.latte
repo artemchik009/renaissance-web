@@ -4,12 +4,13 @@
 
 {block content}
 {if empty($user_data->real_email)}
-<div class="flash error"><b>Внимание!</b> Необходимо добавить настоящую электронную почту, иначе вы не сможете пользоваться клиентами Агента Mail.Ru!</div>
+<div class="flash error"><b>Внимание!</b> Необходимо добавить настоящую электронную почту, иначе ваш аккаунт будет удалён!</div>
 {/if}
 <h1>Редактирование анкеты</h1>
 
-<form action="/editProfile" method="post">    
+<form action="/editProfile" method="post" enctype="multipart/form-data">
     <h3>О себе</h3>
+    <p>Зайти в свой аккаунт вы можете по следующему логину: <b>{$user_data->login}@{$user_data->domain}</b></p>
     <table border="0">
         <tbody>
             <tr>
@@ -69,6 +70,17 @@
                 </td>
                 <td>
                     <input type="text" name="place" value="{$user_data->location}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Аватар:
+                </td>
+                <td>
+                    <input type="file" name="obraz" accept="image/png, image/gif, image/jpeg">
+                </td>
+                <td>
+                    <img src="{$obraz_domain}/{$user_data->domain}/{$user_data->login}/_mrimavatar">
                 </td>
             </tr>
         </tbody>

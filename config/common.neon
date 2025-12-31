@@ -1,6 +1,11 @@
 parameters:
 	mrim_rest_api_url: 'http://192.168.1.15:1862'
 
+constants:
+	avatars_path: '/opt/renaissance-web/avatars/'
+	mrim_obraz_url: 'http://192.168.1.15'
+	email_enabled: false
+
 application:
 	errorPresenter:
 		4xx: Error:Error4xx
