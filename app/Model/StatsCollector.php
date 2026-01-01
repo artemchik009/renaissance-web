@@ -77,7 +77,7 @@ class StatsCollector
             $verKey = $version;
 
             if ($build != null) {
-                $verKey += ' (сборка ' . $build . ')'
+                $verKey += ' (сборка ' . $build . ')';
             }
 
             $prettyClient = $clientNames[$client] ?? $client;
