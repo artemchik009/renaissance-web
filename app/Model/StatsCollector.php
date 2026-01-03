@@ -83,7 +83,7 @@ class StatsCollector
 
             $arrayIndex = array_search($clientFullName, array_column($stats['clients'], 'name'));
 
-            if (!$arrayIndex) {
+            if ($arrayIndex === false) {
                 array_push($stats['clients'], ["name" => $clientFullName, "count" => 0]);
                 $arrayIndex = array_key_last($stats['clients']);
             }
